@@ -609,20 +609,12 @@ const STYLE = `
   .wp-table { min-width: 640px; }
   .wp-table .wp-th:first-child, .wp-table td.wp-td:first-child {
     position: sticky; left: 0; z-index: 5; background: var(--surface-2);
-    box-shadow: 2px 0 6px -2px rgba(0,0,0,0.35);
   }
   .wp-table thead .wp-th:first-child { z-index: 6; }
   .wp-time { padding: 10px 8px; font-size: 13px; }
   .wp-timecell { padding: 4px 2px 4px 4px; }
   .wp-cell { padding: 10px 26px 6px 10px; font-size: 13.5px; min-height: 44px; }
   .wp-desctoggle { padding: 4px 10px 6px; font-size: 11px; }
-
-  /* Dezenter Rand-Schatten als Hinweis, dass die Tabelle horizontal scrollt */
-  .wp-tablewrap::after {
-    content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 14px;
-    background: linear-gradient(to right, transparent, var(--surface) 92%);
-    pointer-events: none; border-radius: 0 12px 12px 0;
-  }
 
   .wp-addrow { gap: 8px; }
   .wp-input { flex: 1 1 100px; min-height: 40px; }
