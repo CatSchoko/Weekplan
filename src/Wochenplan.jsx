@@ -569,15 +569,69 @@ const STYLE = `
     padding-left: calc(1.5rem + env(safe-area-inset-left));
     padding-right: calc(1.5rem + env(safe-area-inset-right)); }
 }
+
+/* Touch-Geräte: Aktionen, die auf Desktop nur bei Hover erscheinen, brauchen einen
+   permanent sichtbaren Trigger, da es kein Hover gibt (z. B. Drag-Handle, Löschen). */
+@media (hover: none) {
+  .wp-draghandle, .wp-del, .wp-descbtn { opacity: 0.55; }
+  .wp-move { opacity: 0.55; }
+}
+
 @media (max-width: 640px) {
-  .wp-root { padding: 1rem 0.75rem; border-radius: 0; max-width: 100%; }
-  .wp-title { font-size: 18px; }
-  .wp-subtitle { font-size: 12px; }
+  .wp-root { padding: 0.85rem 0.6rem; border-radius: 0; max-width: 100%; }
+  .wp-title { font-size: 19px; }
+  .wp-subtitle { font-size: 12.5px; }
+
+  /* Toolbar: einheitliche, ausreichend große Touch-Ziele (min 40px hoch) */
   .wp-toolbar { gap: 8px; }
+  .wp-weeknav { flex: 1 1 auto; }
+  .wp-navbtn { padding: 9px 10px; font-size: 13px; min-height: 40px; flex: 1; text-align: center; }
+  .wp-toolbargroup { gap: 6px; flex-wrap: wrap; }
+  .wp-btn.ghost { padding: 9px 12px; min-height: 40px; font-size: 12.5px; }
+  .wp-iconbtn { width: 40px; height: 40px; }
+  .wp-continuewrap { min-height: 28px; }
+
   .wp-panel { padding: 10px; }
-  .wp-navbtn { padding: 8px 12px; }
-  .wp-settingspanel { right: -8px; width: min(280px, 88vw); }
-  .wp-table { min-width: 700px; }
+  .wp-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .wp-tab { white-space: nowrap; font-size: 12.5px; }
+  .wp-chip { padding: 7px 12px 7px 7px; font-size: 12.5px; }
+  .wp-swatch, .wp-rainbow { width: 22px; height: 22px; }
+  .wp-catinput, .wp-select, .wp-timeinput2 { font-size: 13px; padding: 7px 11px; }
+
+  /* Popover-Panels dürfen den Bildschirmrand nie überschreiten */
+  .wp-settingspanel { right: -8px; width: min(300px, 90vw); max-height: 70vh; overflow-y: auto; }
+  .wp-settingspanel.narrow { width: min(260px, 90vw); }
+
+  /* Zeitspalte beim horizontalen Scrollen fixieren, damit man sich nie verliert */
+  .wp-tablewrap { position: relative; }
+  .wp-table { min-width: 640px; }
+  .wp-table .wp-th:first-child, .wp-table td.wp-td:first-child {
+    position: sticky; left: 0; z-index: 5; background: var(--surface-2);
+    box-shadow: 2px 0 6px -2px rgba(0,0,0,0.35);
+  }
+  .wp-table thead .wp-th:first-child { z-index: 6; }
+  .wp-time { padding: 10px 8px; font-size: 13px; }
+  .wp-timecell { padding: 4px 2px 4px 4px; }
+  .wp-cell { padding: 10px 26px 6px 10px; font-size: 13.5px; min-height: 44px; }
+  .wp-desctoggle { padding: 4px 10px 6px; font-size: 11px; }
+
+  /* Dezenter Rand-Schatten als Hinweis, dass die Tabelle horizontal scrollt */
+  .wp-tablewrap::after {
+    content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 14px;
+    background: linear-gradient(to right, transparent, var(--surface) 92%);
+    pointer-events: none; border-radius: 0 12px 12px 0;
+  }
+
+  .wp-addrow { gap: 8px; }
+  .wp-input { flex: 1 1 100px; min-height: 40px; }
+  .wp-btn { min-height: 40px; }
+  .wp-hint { font-size: 11.5px; }
+}
+
+@media (max-width: 380px) {
+  .wp-navbtn { padding: 9px 6px; font-size: 12.5px; }
+  .wp-btn.ghost span, .wp-btn.ghost { font-size: 12px; }
+  .wp-title { font-size: 17px; }
 }
 `;
 
