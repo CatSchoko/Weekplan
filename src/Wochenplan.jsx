@@ -442,7 +442,9 @@ const STYLE = `
 .wp-rangebtn:disabled { opacity: .5; cursor: default; transform: none; }
 
 .wp-tablewrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px;
-  background: var(--surface); animation: fadeIn .35s cubic-bezier(.4,0,.2,1); }
+  background: var(--surface); animation: fadeIn .35s cubic-bezier(.4,0,.2,1);
+  scrollbar-width: none; -ms-overflow-style: none; }
+.wp-tablewrap::-webkit-scrollbar { display: none; height: 0; width: 0; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 .wp-table { border-collapse: collapse; width: 100%; min-width: 820px; }
 .wp-th { text-align: left; font-size: 12px; font-weight: 600; color: var(--text); padding: 10px 12px;
